@@ -1,0 +1,26 @@
+{%extends 'layout.html'%}
+{%block content%}
+<div style="margin-top: 2%;">
+    <div class="card">
+        <div class="card-header">
+          {{object.title}}
+        </div>
+        <div class="card-body">
+          <div style="float:left; margin-right:2%">
+          <img src="{{object.user.profile.profile_pic.url}}" alt="" class="rounded-circle" width="90" height="90">
+        </div>
+        
+          <blockquote class="blockquote mb-0">
+            <div style="float: left;">
+            <p>{{object.info}}</p>
+            </div>
+          
+            <div style="clear: both;">
+              <hr>
+            <footer class="blockquote-footer"><a href="{% url 'blogs:user_detail_view' object.pk%}">{{object.user.username}}</a><cite title="Source Title" style="float:right;">{{object.date_posted}}</cite></footer>
+          </div>
+          </blockquote>
+        </div>
+      </div>
+</div>
+{%endblock content%}

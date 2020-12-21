@@ -1,0 +1,50 @@
+{%extends 'layout.html'%}
+{%block content%}
+<div class="container"style="border-bottom:2px,solid,black;">
+    <div class="row">
+        
+        <div class="col-4">
+            <img src="{{user.profile_pic.url}}" alt="" class="rounded-circle" height="250" width="250">
+        </div>
+        <div class="col-8">
+            <h1>{{user.user.username}}</h1> <hr>
+        </div>
+    
+</div>
+<hr>
+    <div class="container">
+        <h1>All posts</h1>
+        <hr>
+        {%for blog in ublogs%}
+        <div style="margin-top: 2%;">
+            <div class="card">
+                <a href="{% url 'blogs:post_detail_view' blog.id %}" ><div class="card-header">
+                  {{blog.title}}
+                </div></a>
+                <div class="card-body">
+                  <div style="float:left; margin-right:2%">
+                  <img src="{{blog.user.profile.profile_pic.url}}" alt="" class="rounded-circle" width="90" height="90">
+                </div>
+                
+                  <blockquote class="blockquote mb-0">
+                    <div style="float: left;">
+                    <p>{{blog.info}}</p>
+                    </div>
+                  
+                    <div style="clear: both;">
+                      <hr>
+                    <footer class="blockquote-footer">{{blog.user.username}}<cite title="Source Title" style="float:right;">{{blog.date_posted}}</cite></footer>
+                  </div>
+                  </blockquote>
+                </div>
+              </div>
+        {%empty%}
+        <div class="container">
+        <p>there are no posts to show</p>
+        </div>
+        
+        {%endfor%}
+    </div>
+    
+</div>
+{%endblock content%}

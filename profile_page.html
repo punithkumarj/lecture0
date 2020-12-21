@@ -1,0 +1,12 @@
+{%extends 'layout.html'%}
+{%block content%}
+
+<div class="card bg-light text-black">
+    <img class="img-thumbnail" src="{{profile.profile_pic.url}}" alt="Card image" width="300" height="300" style="display: inline;" >
+    <div style="float: inline;">
+        <p>{{profile.user.username}}</p>
+        <a href="{% url 'blogs:edit_user_info'%}"><button type="button" class="btn btn-primary btn-lg btn-block">Edit info</button></a>
+    </div>
+  </div>   
+
+{%endblock content%}

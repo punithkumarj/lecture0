@@ -1,0 +1,10 @@
+{%extends 'layout.html'%}
+{%block content%}
+<form action="{% url 'blogs:edit_user_info' %}" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{update_user_form.as_p}}
+    <img src="{{request.user.profile.profile_pic.url}}" alt="" class="img-thumbnail" width="200px" height="200px">
+    {{update_profile_form.as_p}}
+    <input type="submit" class="btn btn-primary">
+</form>
+{%endblock content%}
